@@ -5,5 +5,5 @@
 Execute binary file with flags: `./metal-watch --pair=BTCUSDT --offset=1` <br/>
 
 ### Flags:
-`pair` - Pair of the cryptocurrencies that should be watched  <br/>
-`offset` - Price change threshold, when the notification should be triggered ( Add max volume for best UX ) <br/>
+`pair` - Pair of the cryptocurrencies that should be watched, i.e. XRPUSDT, BTCUSDT, BNBBTC and so on  <br/>
+`offset` - Price change threshold, accepts float values, when the notification should be triggered ( Add max volume for best UX ) <br/>
