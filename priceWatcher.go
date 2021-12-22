@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"math"
 	"net/http"
 	"strconv"
 	"time"
@@ -21,6 +20,13 @@ const changeLabel = `
  *
  */
 `
+
+func abs(x float64) float64 {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
 
 
 type priceResponse struct {
@@ -69,7 +75,7 @@ func (pw* PriceWatcher) getPrice() {
 		_ = fmt.Errorf("%s", err.Error())
 	}
 	currentPrice, _ := strconv.ParseFloat(pw.PriceSnapshot.OpenPrice, 64)
-	curr := math.Abs(prevPrice - currentPrice)
+	curr := abs(prevPrice - currentPrice)
 	fmt.Printf("Previous Price is: %s, Current Price is: %s \n", prevValue.OpenPrice, pw.PriceSnapshot.OpenPrice)
 	if (curr >= pw.PriceOffsetNotification) && prevPrice != 0 {
 		fmt.Printf("%s\n", changeLabel)

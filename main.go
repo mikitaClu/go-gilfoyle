@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"os"
 	"os/signal"
 	"syscall"
@@ -14,7 +13,6 @@ func main()  {
 	priceOffset := flag.Float64("offset", 0.0002, "Diff of the currency, that should be notified")
 	flag.Parse()
 
-	fmt.Print(*pair, *priceOffset)
 	pw := NewPriceWatcher(*pair,  *priceOffset)
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt, syscall.SIGTERM)
